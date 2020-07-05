@@ -243,10 +243,6 @@ if __name__ == "__main__":
         features_test = features_positive[threshold_positive:]+features_negative[threshold_negative:]
 
         classifier = NaiveBayesClassifier.train(features_train)
-
-
-        positiveSentences = 0
-        negativeSentences = 0
         
         file = open('sample.txt')
         sentences = file.read()
