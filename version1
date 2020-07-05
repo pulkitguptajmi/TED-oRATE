@@ -1,6 +1,5 @@
 import random
 import time
-
 import speech_recognition as sr
 
 def recognize_speech_from_mic(recognizer, microphone):
@@ -68,7 +67,7 @@ if __name__ == "__main__":
 
     # format the instructions string
     instructions = (
-        " Say RECORD to start recording, UPLOAD if you wish to upload a pre-recorded file:\n "
+        " Say RECORD to start recording, UPLOAD if you wish to upload a pre-recorded file or STOP to terminate:\n "
     )
 
     # show instructions and wait 3 seconds before starting the game
@@ -137,6 +136,8 @@ if __name__ == "__main__":
                 rate = f.getframerate()
                 duration = frames / float(rate)
                 durationOfUserSpeech = duration
+        else:
+            break
 
         
         #Beginning of Analysis Module
@@ -204,7 +205,7 @@ if __name__ == "__main__":
         optimalOpenings = ['how many of you', 'years back','in the year','i have a question for you','In two thousand','in nineteen','did you know','how many people here']
         with open("sample.txt", "r") as file:
             firstLineOfSpeech = file.readline()
-        print('Analysing your Speech Opening...')
+        #print('Analysing your Speech Opening...')
         kyaOptimalLineUseKiyaHai = False
         for opening in optimalOpenings:
             if opening in firstLineOfSpeech:
@@ -251,7 +252,7 @@ if __name__ == "__main__":
         sentences = file.read()
         probdist = classifier.prob_classify(extract_features(sentences.split()))
         pred_sentiment = probdist.max()
-        print(pred_sentiment)
+        #print(pred_sentiment)
         if(pred_sentiment == 'Positive'):
             print("Your overall speech sentiment was perceived by us to be positive. An actual audience would love to be party to it.")
         else:
@@ -259,6 +260,8 @@ if __name__ == "__main__":
             
 
         print("-----------"*10)
+        
+    print("Thanks for using TED oRATE v1. We appreciate your time & wish you the Best of Luck!")
 
 
 
